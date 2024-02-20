@@ -20,6 +20,7 @@ export async function getStaticProps({ params }) {
     `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
   );
   const data = await res.json();
+  console.log(data);
 
   const articles = data.results;
 
