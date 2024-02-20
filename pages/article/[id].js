@@ -7,6 +7,8 @@ export async function getStaticPaths() {
   const data = await res.json();
 
   const articles = data.results;
+  console.log(articles);
+  console.log(JSON.stringify(articles.category));
 
   const paths = articles.map((article) => ({
     params: { id: article.article_id },
@@ -20,7 +22,6 @@ export async function getStaticProps({ params }) {
     `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
   );
   const data = await res.json();
-  console.log(data);
 
   const articles = data.results;
 
