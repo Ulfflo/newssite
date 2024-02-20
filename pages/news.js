@@ -9,6 +9,7 @@ export async function getStaticProps() {
     `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
   );
   const data = await res.json();
+  console.log(data);
 
   return {
     props: {
