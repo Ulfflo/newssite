@@ -7,6 +7,8 @@ export async function getStaticPaths() {
   const data = await res.json();
 
   const articles = data.results;
+  console.log(articles);
+  console.log(JSON.stringify(articles.category));
 
   const paths = articles.map((article) => ({
     params: { id: article.article_id },

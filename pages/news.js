@@ -9,6 +9,7 @@ export async function getStaticProps() {
     `https://newsapi.org/v2/everything?domains=bbc.co.uk&apiKey=e867d5f7fde746aabe8271cff82effcc`
   );
   const data = await res.json();
+  console.log(data);
 
   return {
     props: {
