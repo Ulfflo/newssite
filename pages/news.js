@@ -1,18 +1,18 @@
 import Link from "next/link";
 
-const DIN_API_NYCKEL = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
+// const DIN_API_NYCKEL = "";
 
 //newsdata.io/api/1/news?apikey=pub_38158964e5638dbf5b237b29d3be5bf1a5b9d&q=pizza
 
 export async function getStaticProps() {
   const res = await fetch(
-    `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
+    `https://newsapi.org/v2/everything?domains=bbc.co.uk&apiKey=e867d5f7fde746aabe8271cff82effcc`
   );
   const data = await res.json();
 
   return {
     props: {
-      news: data.results,
+      news: data.articles,
     },
   };
 }
@@ -23,10 +23,10 @@ export default function News({ news }) {
       <ul>
         {news.map((article) => (
           <li>
-            <Link href={`/article/${article.article_id}`}>
+            <Link href={`/article/${article.url}`}>
               <h2>{article.title}</h2>
             </Link>
-            <img src={article.image_url} />
+            <img src={article.urlToImage} />
           </li>
         ))}
       </ul>

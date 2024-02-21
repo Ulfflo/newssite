@@ -17,13 +17,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
+    `https://newsapi.org/v2/everything?domains=bbc.co.uk&apiKey=e867d5f7fde746aabe8271cff82effcc`
   );
   const data = await res.json();
 
-  const articles = data.results;
+  const articles = data.articles;
 
-  const article = articles.find((article) => article.article_id == params.id);
+  const article = articles.find((article) => article.url === params.id);
 
   return {
     props: {
@@ -38,7 +38,7 @@ export default function Article({ article }) {
       {article && (
         <>
           <h2>{article.title}</h2>
-          <img src={article.image_url} />
+          <img src={article.urlToImage} />
         </>
       )}
     </div>
