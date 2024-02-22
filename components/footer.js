@@ -1,8 +1,14 @@
-export default function Footer() {
+const Footer = () => {
   return (
-    <>
-      <h2>Contact us if you got the tea</h2>
-      <p>applenews@contact.com</p>
-    </>
+    <footer className="bg-gray-800 text-white py-8 mt-10">
+      <div className="container mx-auto px-4">
+        <p>
+          &copy; {new Date().getFullYear()} Emelie, Karolina, Josh, Åsa & Ulf.
+          All rights reserved ✌️
+        </p>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;
