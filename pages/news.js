@@ -1,20 +1,18 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ArticlePreview from "@/components/ArticlePreview";
 
-const DIN_API_NYCKEL = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
-
-//newsdata.io/api/1/news?apikey=pub_38158964e5638dbf5b237b29d3be5bf1a5b9d&q=pizza
+const DIN_API_NYCKEL = "76552078f7d24022ae49c16ed222bcd9";
 
 export async function getStaticProps() {
   const res = await fetch(
-    `https://newsdata.io/api/1/news?apikey=${DIN_API_NYCKEL}&q=pizza`
+    `https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=top`
   );
   const data = await res.json();
-  console.log(data);
 
   return {
     props: {
-      news: data.results,
+      news: data.articles,
     },
   };
 }
@@ -54,7 +52,7 @@ export default function News({ news }) {
 
   return (
     <div>
-      <ul>
+      {/* <ul>
         {news.map((article) => (
           <li key={article.article_id}>
             <Link href={`/article/${article.article_id}`}>
@@ -68,7 +66,14 @@ export default function News({ news }) {
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <div>
+        <div className="grid grid-cols-3 gap-8 justify-center items-center max-w-fit">
+          {news.map((item, i) => {
+            return <ArticlePreview key={i} item={item}></ArticlePreview>;
+          })}
+        </div>
+      </div>
     </div>
   );
 }
