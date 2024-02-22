@@ -55,19 +55,20 @@ export default function News({ news }) {
   return (
     <div>
       <ul>
-        {news.map((article) => (
-          <li key={article.article_id}>
-            <Link href={`/article/${article.article_id}`}>
-              <h2>{article.title}</h2>
-            </Link>
-            <img src={article.image_url} />
-            <button onClick={() => handleBookmark(article.article_id)}>
-              {bookmarks.includes(article.article_id)
-                ? "Remove bookmark"
-                : "Bookmark"}
-            </button>
-          </li>
-        ))}
+        {news &&
+          news.map((article) => (
+            <li key={article.article_id}>
+              <Link href={`/article/${article.article_id}`}>
+                <h2>{article.title}</h2>
+              </Link>
+              <img src={article.image_url} />
+              <button onClick={() => handleBookmark(article.article_id)}>
+                {bookmarks.includes(article.article_id)
+                  ? "Remove bookmark"
+                  : "Bookmark"}
+              </button>
+            </li>
+          ))}
       </ul>
     </div>
   );
