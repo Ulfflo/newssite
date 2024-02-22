@@ -1,4 +1,10 @@
-
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0 auto;
+}
+
+body {
+  background-color: #eee;
+}
