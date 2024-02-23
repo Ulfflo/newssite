@@ -1,32 +1,40 @@
-import NewsGrid from "@/components/NewsGrid";
+import NewsGrid from "@/components/Newsgrid";
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 
-const DIN_API_NYCKEL = "37b28439e3ff4cf1af3a6868787b209d";
+const API_KEY = "pub_38637457017fb3ac85b182d167032a301cf5b";
+const ULF_KEY = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
+const ASA_KEY = "pub_3884182ca65aa4cda8ba64f7286674cf809fd";
 
-const Sports = () => {
+export default function Sports() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=sports`
+        `https://newsdata.io/api/1/news?apikey=${ULF_KEY}&category=sports&language=en`
       );
       const data = await res.json();
-      setNews(data.articles);
+
+      console.log("API Response:", data.results);
+
+      //Filtrerar ut artiklar utan bild
+      const filteredNews = data.results.filter((article) => article.image_url);
+
+      setNews(filteredNews);
     };
 
     fetchData();
   }, []);
 
+  console.log("News State:", news);
+
   return (
     <Layout>
       <div>
         <h1 className="text-2xl font-bold mb-4">Sports News</h1>
-        <NewsGrid news={news} />
+        <NewsGrid articles={news} />
       </div>
     </Layout>
   );
-};
-
-export default Sports;
+}
