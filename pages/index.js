@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const API_KEY = "pub_38637457017fb3ac85b182d167032a301cf5b";
 const ULF_KEY = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
+const ASA_KEY = "pub_3884182ca65aa4cda8ba64f7286674cf809fd";
 
 // hook for local storage
 function useStorageState(key, initialState) {
@@ -24,13 +25,13 @@ function useStorageState(key, initialState) {
 }
 
 export default function Home({ news }) {
-  const [bookmarks, setBookmarks] = useStorageState("bookmarks", []);
+  // const [bookmarks, setBookmarks] = useStorageState("bookmarks", []);
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     // fetch(`https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=top`)
     fetch(
-      `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=us&language=en&category=top `
+      `https://newsdata.io/api/1/news?apikey=${ULF_KEY}&country=us&language=en&category=top `
     )
       .then((res) => res.json())
       .then((data) => {

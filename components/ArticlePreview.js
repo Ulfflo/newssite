@@ -3,7 +3,7 @@ import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 function ArticlePreview({ item }) {
   return (
     <a
-      href={item.article_id}
+      href={`/article/${item.article_id}`}
       className="bg-white w-[25em] h-[28em] overflow-hidden no-underline text-black pb-[0.5em] shadow-md flex-col relative"
     >
       <div>
