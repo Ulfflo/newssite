@@ -13,7 +13,13 @@ const SportsPage = () => {
         `https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=entertainment`
       );
       const data = await res.json();
-      setNews(data.articles);
+
+      //Filtrerar ut artiklar utan bild
+      const filteredNews = data.articles.filter(
+        (article) => article.urlToImage
+      );
+
+      setNews(filteredNews);
     };
 
     fetchData();

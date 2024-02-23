@@ -1,10 +1,10 @@
 import ArticlePreview from "./ArticlePreview";
 
-export default function NewsGrid({ news }) {
+export default function NewsGrid({ articles }) {
   return (
     <div>
       <div className="grid grid-cols-3 gap-8 justify-center items-center max-w-fit">
-        {news.map((item, i) => {
+        {articles.map((item, i) => {
           return <ArticlePreview key={i} item={item}></ArticlePreview>;
         })}
       </div>

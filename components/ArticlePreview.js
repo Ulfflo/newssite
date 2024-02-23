@@ -3,13 +3,13 @@ import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 function ArticlePreview({ item }) {
   return (
     <a
-      href={item.url}
+      href={item.article_id}
       className="bg-white w-[25em] h-[28em] overflow-hidden no-underline text-black pb-[0.5em] shadow-md flex-col relative"
     >
       <div>
         <img
           className="w-full h-[14em] object-cover mb-[0.5em] relative"
-          src={item.urlToImage}
+          src={item.image_url}
           alt={item.title}
         />
       </div>

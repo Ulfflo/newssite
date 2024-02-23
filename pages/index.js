@@ -1,21 +1,9 @@
-import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import NewsGrid from "@/components/Newsgrid";
+import { useEffect, useState } from "react";
 
-const DIN_API_NYCKEL = "76552078f7d24022ae49c16ed222bcd9";
-
-export async function getStaticProps() {
-  const res = await fetch(
-    `https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=top`
-  );
-  const data = await res.json();
-
-  return {
-    props: {
-      news: data.articles,
-    },
-  };
-}
+const API_KEY = "pub_38637457017fb3ac85b182d167032a301cf5b";
+const ULF_KEY = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
 
 // hook for local storage
 function useStorageState(key, initialState) {
@@ -37,6 +25,22 @@ function useStorageState(key, initialState) {
 
 export default function Home({ news }) {
   const [bookmarks, setBookmarks] = useStorageState("bookmarks", []);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    // fetch(`https://newsapi.org/v2/everything?apiKey=${DIN_API_NYCKEL}&q=top`)
+    fetch(
+      `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=us&language=en&category=top `
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results);
+        const filteredArticles = data.results.filter(
+          (article) => article.image_url
+        );
+        setArticles(filteredArticles);
+      });
+  }, []);
 
   //function for bookmarks
   const handleBookmark = (articleId) => {
@@ -53,7 +57,7 @@ export default function Home({ news }) {
   return (
     <Layout>
       <div>
-        <NewsGrid news={news} />
+        <NewsGrid news={news} articles={articles} />
       </div>
     </Layout>
   );
