@@ -58,7 +58,7 @@ export default function Home({ news }) {
   return (
     <Layout>
       <div>
-        <NewsGrid news={news} articles={articles} />
+        <NewsGrid news={news} articles={articles} category="article" />
       </div>
     </Layout>
   );

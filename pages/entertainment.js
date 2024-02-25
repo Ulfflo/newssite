@@ -35,7 +35,7 @@ export default function Entertainment() {
     <Layout>
       <div>
         <h1 className="text-2xl font-bold mb-4">Entertainment News</h1>
-        <NewsGrid articles={news} />
+        <NewsGrid articles={news} category="entertainment" />
       </div>
     </Layout>
   );

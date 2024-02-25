@@ -33,7 +33,7 @@ export default function Food() {
     <Layout>
       <div>
         <h1 className="text-2xl font-bold mb-4">Food News</h1>
-        <NewsGrid articles={news} />
+        <NewsGrid articles={news} category="food"/>
       </div>
     </Layout>
   );

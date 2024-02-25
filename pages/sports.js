@@ -33,7 +33,7 @@ export default function Sports() {
     <Layout>
       <div>
         <h1 className="text-2xl font-bold mb-4">Sports News</h1>
-        <NewsGrid articles={news} />
+        <NewsGrid articles={news} category="sports"/>
       </div>
     </Layout>
   );
