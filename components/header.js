@@ -33,6 +33,12 @@ const Header = () => {
           >
             Entertainment
           </Link>
+          <Link
+            href="/bookmarks"
+            className="hover:text-gray-300 text-white no-underline"
+          >
+            Bookmarks
+          </Link>
         </nav>
       </div>
     </header>
