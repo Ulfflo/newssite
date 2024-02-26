@@ -24,7 +24,7 @@ const Header = () => {
             Food
           </Link>
           <Link
-            href="/economy"
+            href="/business"
             className="hover:text-gray-300 text-white no-underline"
           >
             Economy

@@ -32,7 +32,7 @@ export default function Economy() {
     <Layout>
       <div>
         <h1 className="text-2xl font-bold mb-4">Economy News</h1>
-        <NewsGrid articles={news} category="economy" />
+        <NewsGrid articles={news} category="business" />
       </div>
     </Layout>
   );
