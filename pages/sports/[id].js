@@ -1,10 +1,10 @@
-const API_KEY = "pub_38637457017fb3ac85b182d167032a301cf5b";
-const ULF_KEY = "pub_38635164661fa0409ed8deff90d8c8a3b655b";
-const ASA_KEY = "pub_3884182ca65aa4cda8ba64f7286674cf809fd";
+import API_KEY from "@/components/ApiKeys";
+
+const API_NYCKEL = API_KEY;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    `https://newsdata.io/api/1/news?apikey=${ULF_KEY}&category=sports&language=en`
+    `https://newsdata.io/api/1/news?apikey=${API_NYCKEL}&category=sports&language=en`
   );
   const data = await res.json();
 
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `https://newsdata.io/api/1/news?apikey=${ULF_KEY}&category=sports&language=en`
+    `https://newsdata.io/api/1/news?apikey=${API_NYCKEL}&category=sports&language=en`
   );
   const data = await res.json();
 

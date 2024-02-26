@@ -1,6 +1,21 @@
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
 function ArticlePreview({ item, category }) {
+  const { bookmarks, toggleBookmark } = useBookmarkContext();
+
+  if (!item) {
+    return null;
+  }
+
+  const isBookmarked = bookmarks.some(
+    (bookmark) => bookmark.article_id === item.article_id
+  );
+
+  const handleBookmarkToggle = () => {
+    toggleBookmark(item);
+  };
+
   return (
     <div className="bg-white w-[25em] h-[28em] overflow-hidden no-underline text-black pb-[0.5em] shadow-md flex-col relative">
       <a
@@ -20,8 +35,11 @@ function ArticlePreview({ item, category }) {
         </div>
       </a>
       <div className="absolute bottom-4 right-4">
-        <button className="p-0 bg-transparent border-0 text-lg">
-          <IoBookmarkOutline />
+        <button
+          onClick={handleBookmarkToggle}
+          className="p-0 bg-transparent border-0 text-lg"
+        >
+          {isBookmarked ? <IoBookmark /> : <IoBookmarkOutline />}
         </button>
       </div>
     </div>
